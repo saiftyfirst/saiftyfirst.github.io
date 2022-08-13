@@ -4,17 +4,29 @@ title:  "Mean-field Approximation"
 date:   2022-07-26 20:29:32 +0200
 categories: jekyll update
 ---
-### Introduction
-Mean-field approximation is technique that can be used to study the approximate dynamics of a Markov population process, given that the size of the population is large enough. Generally, this is carried out by reducing/representing the system as a system of differential equations.
+## Introduction
+Mean-field approximation is technique that can be used to study the approximate dynamics of a population of identical elements. In Computational Neuroscience, the technique is often employed to study the overall dynamics of a large population of neurons. 
 
-**Overall mean-field model**: An overall mean-field model, X, describes the limit behaviour of N->&infin; individual objects, each modelled by *X*, and is defined as a tuple (X,Q), that consists of an infinite set of states:
-When $a \ne 0$, there are two solutions to $(ax^2 + bx + c = 0)$ and they are 
-$$ x = {-b \pm \sqrt{b^2-4ac} \over 2a} $$
-    
+### Firing rates of a population of neurons 
+**Input current to a single neuron**
+In its most widespread application, mean-field approximation can be used to study the firing rates of a population of neurons. Consider a population of N neuorons that are fully connected (each neurons is connected to every other neuron exceot itself - no recurrence). At a particular point in time, neuron i recieves an external input current, $$I_{ext}$$, and a synaptic current, $$I_{syn}$$, which is the aggregated current it receives from the synaptic connections it forms with its neighboring neuorns.
+$$I_{i}(t) = I_{ext}(t) + I_{syn}(t)$$ --- (1)
 
-### Key Concepts
+**The transfer function** [1]
+Since we are interested in the firing rates of the neurons, the important metric we wish to analyse is how the input current, $$I_i$$ into neuron i affects its firing rate, $$f_i$$. The relationship between the two is given by what is called the transfer (gain/response) function.
+$$f_{i}(t) = S ( I_{i}(t))$$ --- (2)
+The mean firing rate can thus be obtained by finding the expected value of the firing rate expression above.
+$$\langle f_{i}(t) \rangle = \langle S ( I_{i}(t)) \rangle$$ --- (3)
 
-### Key Mathematical Constructs
-### Mean Field Approximation in a Model of Visuospatial Working Memory
-### References
+**The motivation for mean-field analysis** [1]
+The motivation for mean field analysis comes from problem faced when we wish to evalutate (3). The component $$I_{syn}(t)$$ in $$I_{ext}(t)$$ depends on the state of each of the neighboring neurons of i at each point in time. This mean, when we wish to evaluate (3), we must account for all the states of each neighbor including their probalities of being in a particular state and the effect of being in that state that it has on neuron i. Concretely, let $$x(t)$$ represent the vector of states of all neigbors of neuron i. Then we can rewrite (2) and (3) as follows:
+$$f_{i}(t) = S ( I_{i}(x(t)))$$ --- (4)
+$$\langle f_{i}(t) \rangle = \langle S ( I_{i}(x(t))) \rangle = \sum_{x}S(I_{i}(x(t)p(x(t)))$$, where $$p(x(t))$$ is the probaility that the neigbors are in state $$x$$ --- (5)
 
+## Example 1: Binary Neurons
+
+## Example 2: LIF Neurons
+
+## Example 3: Mean-field Approximation in a Model of Visuospatial Working Memory
+
+## References
