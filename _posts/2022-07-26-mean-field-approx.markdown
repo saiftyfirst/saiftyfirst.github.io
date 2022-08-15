@@ -58,11 +58,30 @@ A binaty neuron is characterized by consisting of two states, spiking or not, $$
 I_{i} = \sum_{J_{j \neq i}}^{N}J_{ij}x_j + I_{i,ext}
 \tag{7}\end{equation}
  
+\begin{equation}
+I_{i} \approx \langle I_{i} \rangle = \sum_{J_{j \neq i}}^{N}J_{ij} \langle x_j \rangle + I_{i,ext}
+\tag{8}\end{equation}
+
+\begin{equation}
+f_{i} = S(\sum_{J_{j \neq i}}^{N}J_{ij} f_{j} + I_{i,ext})
+\tag{9}\end{equation}
+
+*Spike on current threshold*
 
 
-### Example 2: LIF Neurons
+### Example 2: Mean-field Approximation in a Model of Visuospatial Working Memory [2]
+\begin{equation}
+\tau_{0} df_{i}/dt = -k(f_{i}) + g(I_{i})
+\tag{10}\end{equation}
 
-### Example 3: Mean-field Approximation in a Model of Visuospatial Working Memory
+\begin{equation}
+I(\theta,t) = I_{ext}(\theta,t) + \frac{1}{2\pi}\int_{-\pi}^{\pi}W(\theta - \theta')f(\theta', t) d\theta'
+\tag{11}\end{equation}
+
+\begin{equation}
+f_{i} = S(\sum_{J_{j \neq i}}^{N}J_{ij} f_{j} + I_{i,ext})
+\tag{12}\end{equation}
+
 
 ### The validity of mean-field approxmiation
 
